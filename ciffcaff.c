@@ -70,6 +70,7 @@ struct CaffFile
     std::vector<CaffAnimation> animations;
 };
 
+// Function to remove the extension from a filename
 std::string removeExtension(const std::string &filename)
 {
     size_t lastDotPos = filename.find_last_of(".");
@@ -80,6 +81,7 @@ std::string removeExtension(const std::string &filename)
     return filename;
 }
 
+// Function to seek to a magic string in a stream
 void seekToMagic(std::istream &stream, const std::string &magic)
 {
     char c;
@@ -99,6 +101,7 @@ void seekToMagic(std::istream &stream, const std::string &magic)
     }
 }
 
+// Function to parse a CIFF file
 CiffImage parseCiffFile(std::istream &stream)
 {
     CiffImage image;
@@ -135,6 +138,8 @@ CiffImage parseCiffFile(std::istream &stream)
 
     return image;
 }
+
+// Function to convert a CIFF image to JPEG
 void convertCiffToJpeg(const CiffImage &image, const std::string &outputPath)
 {
     jpeg_compress_struct cinfo;
@@ -303,8 +308,10 @@ int main(int argc, char *argv[])
         // Close the file
         file.close();
 
+        // Remove the extension from the CAFF file path and add the JPEG extension
         std::string output_path = removeExtension(std::string(argv[2])) + ".jpg";
 
+        // Convert the first CIFF image to JPEG
         convertCiffToJpeg(caff.animations[0].ciff, output_path);
     }
     else
