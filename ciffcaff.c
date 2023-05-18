@@ -81,7 +81,7 @@ std::string removeExtension(const std::string &filename)
     return filename;
 }
 
-// Function to seek to a magic string in a stream
+// Function to seek to a magic string in a stream as the binary file starts with some unknown data before the magic string
 void seekToMagic(std::istream &stream, const std::string &magic)
 {
     char c;
@@ -121,6 +121,7 @@ CiffImage parseCiffFile(std::istream &stream)
     // std::cout << image.header.width << std::endl;
     // std::cout << image.header.height << std::endl;
 
+    // Read caption and tags
     std::getline(stream, image.header.caption, '\n');
 
     std::string tag;
@@ -130,6 +131,7 @@ CiffImage parseCiffFile(std::istream &stream)
         image.header.tags.push_back(tag);
     }
 
+    // Read pixel data
     RgbPixel pixel;
     while (stream.read(reinterpret_cast<char *>(&pixel), sizeof(RgbPixel)))
     {
