@@ -112,11 +112,11 @@ CiffImage parseCiffFile(std::istream &stream)
     stream.read(reinterpret_cast<char *>(&image.header.width), 8);
     stream.read(reinterpret_cast<char *>(&image.header.height), 8);
 
-    //std::cout << image.header.magic << std::endl;
-    //std::cout << image.header.header_size << std::endl;
-    //std::cout << image.header.content_size << std::endl;
-    //std::cout << image.header.width << std::endl;
-    //std::cout << image.header.height << std::endl;
+    // std::cout << image.header.magic << std::endl;
+    // std::cout << image.header.header_size << std::endl;
+    // std::cout << image.header.content_size << std::endl;
+    // std::cout << image.header.width << std::endl;
+    // std::cout << image.header.height << std::endl;
 
     std::getline(stream, image.header.caption, '\n');
 
@@ -192,9 +192,10 @@ CaffFile parseCaffFile(std::istream &stream)
     stream.read(caff.header.magic, 4);
     stream.read(reinterpret_cast<char *>(&caff.header.header_size), 8);
     stream.read(reinterpret_cast<char *>(&caff.header.num_ciffs), 8);
-    std::cout << caff.header.magic << std::endl;
-    std::cout << caff.header.header_size << std::endl;
-    std::cout << caff.header.num_ciffs << std::endl;
+
+    // std::cout << caff.header.magic << std::endl;
+    // std::cout << caff.header.header_size << std::endl;
+    // std::cout << caff.header.num_ciffs << std::endl;
 
     // Read the blocks
     while (!stream.eof())
@@ -204,8 +205,9 @@ CaffFile parseCaffFile(std::istream &stream)
         uint64_t block_length;
         stream.read(reinterpret_cast<char *>(&block_id), 1);
         stream.read(reinterpret_cast<char *>(&block_length), 8);
-        std::cout << "Block ID: " << (int)block_id << std::endl;
-        std::cout << "Block length: " << block_length << std::endl;
+
+        // std::cout << "Block ID: " << (int)block_id << std::endl;
+        // std::cout << "Block length: " << block_length << std::endl;
 
         // Handle the block based on its ID
         // Header block already read so start with the block ID 2
