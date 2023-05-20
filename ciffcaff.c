@@ -278,7 +278,7 @@ int main(int argc, char *argv[])
         file.close();
 
         // Convert the CIFF image to JPEG
-        // Remove the extension from the CAFF file path and add the JPEG extension
+        // Remove the extension from the CIFF file path and add the JPEG extension
         std::string output_path = removeExtension(std::string(argv[2])) + ".jpg";
         convertCiffToJpeg(image, output_path);
     }
