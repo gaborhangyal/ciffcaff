@@ -1,7 +1,5 @@
 #include "caff_parser.h"
 #include "helper_functions.h"
-#include <iostream>
-#include <sstream>
 
 CaffFile parseCaffFile(std::istream &stream)
 {

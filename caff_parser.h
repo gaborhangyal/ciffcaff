@@ -6,6 +6,8 @@
 #include <vector>
 #include <fstream>
 #include <filesystem>
+#include <iostream>
+#include <sstream>
 #include "ciff_parser.h"
 
 // Structure for CAFF header

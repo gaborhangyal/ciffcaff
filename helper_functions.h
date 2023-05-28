@@ -3,6 +3,7 @@
 
 #include <string>
 #include <istream>
+#include <iostream>
 
 // Function to remove the extension from a filename
 std::string removeExtension(const std::string &filename);

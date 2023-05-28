@@ -1,5 +1,4 @@
 #include "helper_functions.h"
-#include <iostream>
 
 std::string removeExtension(const std::string &filename)
 {
