@@ -99,6 +99,8 @@ void seekToMagic(std::istream &stream, const std::string &magic)
             break;
         }
     }
+    std::cerr << "Magic not found, exiting..." << magic << std::endl;
+    exit(-1);
 }
 
 // Function to parse a CIFF file
@@ -204,7 +206,13 @@ CaffFile parseCaffFile(std::istream &stream)
         stream.read(reinterpret_cast<char *>(&block_length), 8);
 
         // Handle the block based on its ID
-        // Header block already read so start with the block ID 2
+
+        if (block_id == 1)
+        {
+            // Skip second header block as the first one should be used
+            stream.seekg(block_length, std::ios::cur);
+        }
+
         if (block_id == 2)
         {
             // Credits block
