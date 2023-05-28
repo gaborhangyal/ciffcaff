@@ -5,7 +5,9 @@ CFLAGS := -std=c++11 -Wall -Wextra
 TARGET := parser
 
 # Source files
-SRCS := ciffcaff.c
+SRCS := main.c ciff_parser.c caff_parser.c helper_functions.c
+
+HDRS := ciff_parser.h caff_parser.h helper_functions.h
 
 # Object files
 OBJS := $(SRCS:.cpp=.o)
